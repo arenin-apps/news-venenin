@@ -1,0 +1,10 @@
+[
+  { "id": 17, "slug": "noticias", "nombre": "Noticias" },
+  { "id": 18, "slug": "datos-utiles", "nombre": "Datos Útiles" },
+  { "id": 19, "slug": "eventos", "nombre": "Eventos" },
+  { "id": 20, "slug": "comunidad", "nombre": "Comunidad" },
+  { "id": 21, "slug": "vida-en-uk", "nombre": "Vida en UK" },
+  { "id": 22, "slug": "salud-y-bienestar", "nombre": "Salud y Bienestar" },
+  { "id": 23, "slug": "curiosidades", "nombre": "Curiosidades" },
+  { "id": 24, "slug": "personajes-venezolanos", "nombre": "Personajes Venezolanos" }
+]
