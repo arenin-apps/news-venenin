@@ -7,6 +7,14 @@ on:
         description: 'URL del articulo a convertir en post'
         required: true
         type: string
+      tipo:
+        description: 'Tipo de contenido'
+        required: true
+        default: 'noticia'
+        type: choice
+        options:
+          - noticia
+          - guia
 
 permissions:
   contents: read
@@ -29,4 +37,5 @@ jobs:
           WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
           ADSENSE_INARTICLE_SLOT: ${{ secrets.ADSENSE_INARTICLE_SLOT }}
           POST_URL: ${{ github.event.inputs.url }}
+          POST_TIPO: ${{ github.event.inputs.tipo }}
         run: node scripts/generar-post-manual.mjs
