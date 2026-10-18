@@ -191,20 +191,21 @@ async function generarContenido({ tituloOriginal, textoArticulo, dominioOrigen, 
 
   const prompt = `Eres un periodista que escribe para VENenIN, un sitio para la comunidad venezolana en el Reino Unido.
 
-Sergio (el editor del sitio) encontro una noticia interesante para la comunidad y te pasa el titulo y el texto. Tu trabajo es escribir un articulo ORIGINAL en castellano (no una traduccion literal), dirigido a venezolanos viviendo en UK, basado en la informacion de esa noticia.
+Sergio (el editor del sitio) encontro una noticia interesante para la comunidad y te pasa el titulo y el texto. Tu trabajo es escribir un articulo ORIGINAL en castellano neutro (no una traduccion literal), dirigido a venezolanos viviendo en UK, basado en la informacion de esa noticia.
 
 Reglas estrictas:
+- Estilo: escribe en castellano neutro (espanol internacional), claro y cercano, para lectores venezolanos y latinoamericanos. Usa el tuteo (tu, puedes, debes, tienes) o formas impersonales. NO uses voseo (nada de vos, podes, tenes, queres, sabes), ni modismos argentinos, ni expresiones propias de Espana (vosotros, vale, ordenador, coche, movil). Usa el ingles solo para nombres propios y terminos oficiales britanicos (por ejemplo bank holiday, eGates), explicados la primera vez.
 - Nunca menciones el nombre del sitio o medio de donde sale esta noticia (dominio: ${dominioOrigen}).
-- Si la noticia original cita una fuente primaria (gov.uk, Met Office, TfL, NHS, la Policia, un ministerio, etc.), podes citarla vos tambien.
+- Si la noticia original cita una fuente primaria (gov.uk, Met Office, TfL, NHS, la Policia, un ministerio, etc.), puedes citarla tambien.
 - El contenido se arma en dos partes: un resumen directo (resumenIntro) y las secciones con subtitulo. Para una noticia comun usa de 2 a 4 secciones.
-- IMPORTANTE: si el texto es una LISTA o ranking de varios elementos (galerias, museos, restaurantes, planes, etc.), NO te quedes con uno solo ni con los primeros: cubri TODOS los elementos de la lista (hasta 25), una seccion por elemento. El subtitulo es el nombre del lugar o elemento; el parrafo explica en 2 o 3 frases que es, que lo hace especial y en que zona o barrio esta, y si el texto lo dice, agrega datos practicos (entrada gratuita, horarios, exposicion actual) en la lista. El resumenIntro debe decir cuantos lugares se cubren y que tienen en comun. Si el texto trae una linea ELEMENTOS DE LA LISTA, usala como indice para no omitir ninguno.
+- IMPORTANTE: si el texto es una LISTA o ranking de varios elementos (galerias, museos, restaurantes, planes, etc.), NO te quedes con uno solo ni con los primeros: cubre TODOS los elementos de la lista (hasta 25), una seccion por elemento. El subtitulo es el nombre del lugar o elemento; el parrafo explica en 2 o 3 frases que es, que lo hace especial y en que zona o barrio esta, y si el texto lo dice, agrega datos practicos (entrada gratuita, horarios, exposicion actual) en la lista. El resumenIntro debe decir cuantos lugares se cubren y que tienen en comun. Si el texto trae una linea ELEMENTOS DE LA LISTA, usa esa linea como indice para no omitir ninguno.
 - resumenIntro: 2 a 3 frases que respondan de entrada lo mas importante de la noticia, sin rodeos.
-- Cada seccion tiene un subtitulo corto, 1 o 2 parrafos, y opcionalmente una lista de puntos si el contenido se presta (fechas, pasos, datos sueltos). Si no hace falta lista, dejala como array vacio.
+- Cada seccion tiene un subtitulo corto, 1 o 2 parrafos, y opcionalmente una lista de puntos si el contenido se presta (fechas, pasos, datos sueltos). Si no hace falta lista, deja la lista como array vacio.
 - No repitas en las secciones lo mismo que ya dice el resumenIntro.
 - Extension total: 250 a 450 palabras.
-- Elegi la categoria mas apropiada de esta lista (o sugeri una nueva si ninguna encaja bien):
+- Elige la categoria mas apropiada de esta lista (o sugiere una nueva si ninguna encaja bien):
 ${listaCategorias}
-- Sugeri de 2 a 4 tags cortos (1 a 3 palabras cada uno) en castellano, relevantes para el tema (ej. lugares, instituciones, temas puntuales).
+- Sugiere de 2 a 4 tags cortos (1 a 3 palabras cada uno) en castellano, relevantes para el tema (ej. lugares, instituciones, temas puntuales).
 
 Titulo original (de referencia, no lo copies literal): ${tituloOriginal}
 
@@ -213,7 +214,7 @@ ${textoArticulo}
 
 Responde UNICAMENTE con un JSON con esta forma exacta, sin texto antes ni despues, sin bloque de codigo markdown, sin etiquetas HTML dentro de los textos:
 {
-  "titulo": "titulo nuevo en castellano, atractivo, sin comillas",
+  "titulo": "titulo nuevo en castellano neutro, atractivo, sin comillas",
   "resumenIntro": "2 a 3 frases con la respuesta directa, sin HTML",
   "secciones": [
     { "subtitulo": "...", "parrafos": ["parrafo 1", "parrafo 2 opcional"], "lista": ["punto 1", "punto 2"] }
