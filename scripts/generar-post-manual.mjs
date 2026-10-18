@@ -21,6 +21,7 @@ const WP_APP_USER = process.env.WP_APP_USER;
 const WP_APP_PASSWORD = process.env.WP_APP_PASSWORD;
 const ADSENSE_INARTICLE_SLOT = process.env.ADSENSE_INARTICLE_SLOT || '';
 const POST_URL = process.env.POST_URL;
+const POST_TIPO = (process.env.POST_TIPO || 'noticia').trim();
 
 const ADSENSE_BANNER = `<div style="text-align:center;">
 <p style="color:#94a3b8; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin:0 0 6px 0;">Publicidad</p>
@@ -186,7 +187,7 @@ function extraerTextoVisible(html) {
 
 /* --- Gemini --------------------------------------------------------- */
 
-async function generarContenido({ tituloOriginal, textoArticulo, dominioOrigen, categorias }) {
+async function generarContenido({ tituloOriginal, textoArticulo, dominioOrigen, categorias, tipo }) {
   const listaCategorias = categorias.map(c => `- ${c.nombre}`).join('\n');
 
   const prompt = `Eres un periodista que escribe para VENenIN, un sitio para la comunidad venezolana en el Reino Unido.
@@ -227,13 +228,54 @@ Responde UNICAMENTE con un JSON con esta forma exacta, sin texto antes ni despue
   "imagenQuery": "2 a 4 palabras en ingles para buscar una foto relacionada en un banco de imagenes"
 }`;
 
+  const promptGuia = [
+    'Eres un redactor de VENenIN, un sitio para la comunidad venezolana en el Reino Unido. Tu trabajo es escribir una GUÍA DE TRÁMITE práctica, en castellano neutro (español internacional), para venezolanos que viven en el Reino Unido, basada ÚNICAMENTE en el texto oficial de referencia.',
+    '',
+    'Reglas estrictas:',
+    '- Estilo: castellano neutro, claro y cercano. Usa el tuteo (tú, puedes, debes, tienes) o formas impersonales. NO uses voseo (nada de vos, podés, tenés), ni modismos argentinos, ni expresiones propias de España (vosotros, vale, ordenador, coche, móvil).',
+    '- Escribe con ortografía correcta: tildes, ñ y signos de apertura (¿ ¡) donde corresponda, también en el título y en los subtítulos.',
+    '- Usa solo información que aparezca en el texto de referencia. NO inventes pasos, costos, plazos, requisitos, direcciones ni enlaces. Si el texto no trae un dato importante (por ejemplo el costo o el plazo), no lo menciones o aclara que hay que confirmarlo en la fuente oficial.',
+    '- La guía se publica con un enlace a la fuente oficial al pie. Puedes nombrar a la institución oficial (NHS, GOV.UK, HMRC, un consulado, etc.).',
+    '- Es información general, no asesoramiento legal personalizado. No hables de VENenIN en tercera persona.',
+    '- Estructura de "secciones", en este orden, omitiendo las que el texto no permita completar:',
+    '  1. "Para quién es": quién puede o debe hacer este trámite.',
+    '  2. "Paso a paso": lista de pasos cortos y concretos, en orden (poner "ordenada": true en esa sección).',
+    '  3. "Documentos y datos que necesitas": lista.',
+    '  4. "Costos y plazos".',
+    '  5. "Ten en cuenta": avisos o errores frecuentes, solo si el texto los respalda.',
+    '- resumenIntro: 2 a 3 frases que expliquen qué es el trámite y para qué sirve.',
+    '- Extensión total: 300 a 600 palabras. Sé conciso.',
+    '- Sugiere de 2 a 4 tags cortos (1 a 3 palabras cada uno) en castellano.',
+    '',
+    'Título original (de referencia): ' + tituloOriginal,
+    '',
+    'Texto oficial de referencia:',
+    textoArticulo,
+    '',
+    'Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto antes ni después, sin bloque de código markdown, sin etiquetas HTML dentro de los textos:',
+    '{',
+    '  "titulo": "título claro tipo Cómo hacer X en el Reino Unido: guía paso a paso, sin comillas",',
+    '  "resumenIntro": "2 a 3 frases, sin HTML",',
+    '  "secciones": [',
+    '    { "subtitulo": "...", "parrafos": ["párrafo opcional"], "lista": ["punto 1", "punto 2"], "ordenada": false }',
+    '  ],',
+    '  "fuenteOficialNombre": "nombre de la institución oficial, por ejemplo NHS o GOV.UK",',
+    '  "extractoSeo": "resumen de 130-155 caracteres para meta description",',
+    '  "focusKeyphrase": "frase clave de 2 a 4 palabras para SEO",',
+    '  "categoria": "Trámites",',
+    '  "categoriaEsNueva": false,',
+    '  "tags": ["tag uno", "tag dos"],',
+    '  "imagenQuery": "2 a 4 palabras en inglés para buscar una foto relacionada en un banco de imágenes"',
+    '}'
+  ].join('\n');
+
   const data = await pedirJson(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${GEMINI_API_KEY}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
+        contents: [{ parts: [{ text: tipo === 'guia' ? promptGuia : prompt }] }],
         generationConfig: { temperature: 0.7, responseMimeType: 'application/json', maxOutputTokens: 16384 }
       })
     }
@@ -253,11 +295,11 @@ function escaparHtml(s) {
     .replace(/>/g, '&gt;');
 }
 
-function construirCuerpoHtml({ resumenIntro, secciones }) {
+function construirCuerpoHtml({ resumenIntro, secciones, pieGuia }) {
   const seccionesHtml = (secciones || []).map(sec => {
     const parrafosHtml = (sec.parrafos || []).map(p => `<p>${escaparHtml(p)}</p>`).join('\n');
     const listaHtml = (sec.lista && sec.lista.length)
-      ? `<ul>\n${sec.lista.map(li => `<li>${escaparHtml(li)}</li>`).join('\n')}\n</ul>`
+      ? `<${sec.ordenada ? 'ol' : 'ul'}>\n${sec.lista.map(li => `<li>${escaparHtml(li)}</li>`).join('\n')}\n</${sec.ordenada ? 'ol' : 'ul'}>`
       : '';
     return `<h3>${escaparHtml(sec.subtitulo)}</h3>\n${parrafosHtml}\n${listaHtml}`;
   }).join('\n');
@@ -285,7 +327,17 @@ function construirCuerpoHtml({ resumenIntro, secciones }) {
 <p>${escaparHtml(resumenIntro)}</p>
 </div>
 ${seccionesHtml}
+${pieGuia || ''}
 </div>`;
+}
+
+// Pie de las guias: fuente oficial, fecha de revision y aviso.
+function construirPieGuia({ url, nombre }) {
+  const fecha = new Date().toLocaleDateString('es-ES', { timeZone: 'Europe/London', day: '2-digit', month: '2-digit', year: 'numeric' });
+  return '<div style="border-top: 1px solid var(--border-color); margin-top: 1.8rem; padding-top: 1rem; font-size: 0.9rem;">' +
+    '<p><strong>Fuente oficial:</strong> <a href="' + escaparHtml(url) + '" target="_blank" rel="noopener">' + escaparHtml(nombre) + '</a></p>' +
+    '<p>Información orientativa. Los requisitos, costos y plazos pueden cambiar: confirma siempre en la fuente oficial antes de iniciar el trámite.</p>' +
+    '<p><strong>Última revisión:</strong> ' + fecha + '</p></div>';
 }
 
 function construirBloqueImagen({ id, url, alt, fotografo }) {
@@ -453,7 +505,17 @@ async function main() {
   const dominioOrigen = urlValida.hostname.replace(/^www\./, '');
 
   console.log(`Leyendo ${POST_URL}...`);
-  const html = await pedirTexto(POST_URL);
+  let html = await pedirTexto(POST_URL);
+  // Las guias de GOV.UK vienen en varias partes: la version /print trae todas juntas.
+  if (POST_TIPO === 'guia' && urlValida.hostname === 'www.gov.uk' && !/\/print\/?$/.test(urlValida.pathname)) {
+    try {
+      const htmlCompleto = await pedirTexto(POST_URL.replace(/[?#].*$/, '').replace(/\/$/, '') + '/print');
+      if (extraerTextoVisible(htmlCompleto).length > extraerTextoVisible(html).length) {
+        html = htmlCompleto;
+        console.log('Guia de GOV.UK: se uso la version completa (/print).');
+      }
+    } catch (e) { /* sin version /print: se usa la pagina original */ }
+  }
   const tituloOriginal = extraerTitulo(html) || POST_URL;
   const textoArticulo = extraerTextoVisible(html);
   console.log(`Titulo original detectado: "${tituloOriginal}"`);
@@ -463,7 +525,7 @@ async function main() {
     process.exit(1);
   }
 
-  const generado = await generarContenido({ tituloOriginal, textoArticulo, dominioOrigen, categorias });
+  const generado = await generarContenido({ tituloOriginal, textoArticulo, dominioOrigen, categorias, tipo: POST_TIPO });
 
   let featuredMediaId = null;
   let imagenCuerpo = null;
@@ -481,7 +543,9 @@ async function main() {
   if (generado.categoriaEsNueva) {
     console.log(`SUGERENCIA: nueva categoria "${generado.categoria}" (revisar y crear manualmente si corresponde)`);
   }
-  const categoria = elegirCategoria(generado.categoria, categorias);
+  const categoriaGuia = POST_TIPO === 'guia' ? categorias.find(c => c.slug === 'tramites') : null;
+  if (POST_TIPO === 'guia' && !categoriaGuia) console.error('Aviso: no existe la categoria tramites en data/categorias.json, se usa la que sugiere el modelo.');
+  const categoria = categoriaGuia || elegirCategoria(generado.categoria, categorias);
 
   let tagIds = [];
   try {
@@ -500,7 +564,7 @@ async function main() {
   const partesHtml = [
     ADSENSE_BANNER,
     creditoFoto,
-    `${construirCuerpoHtml(generado)}\n${adsenseInArticle()}`
+    `${construirCuerpoHtml(POST_TIPO === 'guia' ? { ...generado, pieGuia: construirPieGuia({ url: POST_URL, nombre: generado.fuenteOficialNombre || dominioOrigen }) } : generado)}\n${adsenseInArticle()}`
   ].filter(Boolean).join('\n\n')
   // El sitio usa editor clasico + WPBakery: se envuelve en vc_raw_html (base64) para que wpautop no rompa el HTML.
   const content = `[vc_raw_html]${Buffer.from(encodeURIComponent(partesHtml)).toString('base64')}[/vc_raw_html]`;
