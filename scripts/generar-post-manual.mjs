@@ -360,7 +360,7 @@ async function crearBorrador({ titulo, content, resumenIntro, extractoSeo, focus
       tags: tagIds || [],
       featured_media: featuredMediaId || undefined,
       meta: {
-        _yoast_wpseo_title: `${titulo} | ARenIN`,
+        _yoast_wpseo_title: `${titulo} | VENenIN`,
         _yoast_wpseo_metadesc: extractoSeo,
         _yoast_wpseo_focuskw: focusKeyphrase,
         '_yoast_wpseo_opengraph-title': titulo,
@@ -459,9 +459,13 @@ async function main() {
   const bloqueImagen = imagenCuerpo
     ? construirBloqueImagen({ id: featuredMediaId, url: imagenCuerpo.url, alt: generado.titulo, fotografo: imagenCuerpo.fotografo })
     : '';
+  // El tema ya muestra la imagen destacada arriba del titulo: no se repite en el cuerpo, solo el credito.
+  const creditoFoto = imagenCuerpo
+    ? '<p style="font-size:11px;color:#94a3b8;margin:0 0 12px">Foto: ' + escaparHtml(imagenCuerpo.fotografo) + ' / Pexels</p>'
+    : ''
   const partesHtml = [
     ADSENSE_BANNER,
-    bloqueImagen.replace(/<!--[\s\S]*?-->/g, ''),
+    creditoFoto,
     `${construirCuerpoHtml(generado)}\n${adsenseInArticle()}`
   ].filter(Boolean).join('\n\n')
   // El sitio usa editor clasico + WPBakery: se envuelve en vc_raw_html (base64) para que wpautop no rompa el HTML.
