@@ -4,5 +4,35 @@
     "intentos": 1,
     "fecha": "2026-11-06T13:17:28.179Z",
     "arenin": 10560
+  },
+  "https://secretldn.com/tube-strikes-london-winter/": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-06T13:35:48.876Z",
+    "arenin": 10564
+  },
+  "https://www.timeout.com/uk/news/coolest-neighbourhoods-2026-bristol-old-market-110626": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-06T13:36:24.891Z",
+    "arenin": 10566
+  },
+  "https://www.timeout.com/london/news/tube-and-train-strikes-christmas-winter-2026-2027-full-list-of-dates-and-lines-110626": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-06T13:38:17.834Z",
+    "arenin": 10568
+  },
+  "https://londonist.com/london/transport/tube-strikes-london-christmas-2026-november-december-january-2027": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-06T13:40:53.431Z",
+    "arenin": 10570
+  },
+  "https://www.mylondon.news/news/west-london-news/richmond-council-fines-man-100-34872978": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-06T13:41:21.586Z",
+    "arenin": 10572
   }
 }
