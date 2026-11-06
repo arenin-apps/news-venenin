@@ -588,8 +588,8 @@ async function main() {
     creditoFoto,
     `${construirCuerpoHtml(POST_TIPO === 'guia' ? { ...generado, pieGuia: construirPieGuia({ url: POST_URL, nombre: generado.fuenteOficialNombre || dominioOrigen }) } : generado)}${ADSENSE_ACTIVO ? String.fromCharCode(10) + adsenseInArticle() : ""}`
   ].filter(Boolean).join('\n\n')
-  // El sitio usa editor clasico + WPBakery: se envuelve en vc_raw_html (base64) para que wpautop no rompa el HTML.
-  const content = `[vc_raw_html]${Buffer.from(encodeURIComponent(partesHtml)).toString('base64')}[/vc_raw_html]`;
+  // El sitio ya no usa WPBakery (migro a Astra): el HTML va en un bloque Gutenberg wp:html, como las demas notas.
+  const content = `<!-- wp:html -->\n${partesHtml}\n<!-- /wp:html -->`;
 
   const post = await crearBorrador({
     titulo: generado.titulo,
