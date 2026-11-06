@@ -20,6 +20,8 @@ const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 const WP_APP_USER = process.env.WP_APP_USER;
 const WP_APP_PASSWORD = process.env.WP_APP_PASSWORD;
 const ADSENSE_INARTICLE_SLOT = process.env.ADSENSE_INARTICLE_SLOT || '';
+// VENenIN todavia no tiene AdSense aprobado: los borradores salen sin anuncios. Poner en true cuando se apruebe.
+const ADSENSE_ACTIVO = false;
 const POST_URL = process.env.POST_URL;
 const POST_TIPO = (process.env.POST_TIPO || 'noticia').trim();
 
@@ -582,9 +584,9 @@ async function main() {
     ? '<p style="font-size:11px;color:#94a3b8;margin:0 0 12px">Foto: ' + escaparHtml(imagenCuerpo.fotografo) + ' / Pexels</p>'
     : ''
   const partesHtml = [
-    ADSENSE_BANNER,
+    ADSENSE_ACTIVO ? ADSENSE_BANNER : null,
     creditoFoto,
-    `${construirCuerpoHtml(POST_TIPO === 'guia' ? { ...generado, pieGuia: construirPieGuia({ url: POST_URL, nombre: generado.fuenteOficialNombre || dominioOrigen }) } : generado)}\n${adsenseInArticle()}`
+    `${construirCuerpoHtml(POST_TIPO === 'guia' ? { ...generado, pieGuia: construirPieGuia({ url: POST_URL, nombre: generado.fuenteOficialNombre || dominioOrigen }) } : generado)}${ADSENSE_ACTIVO ? String.fromCharCode(10) + adsenseInArticle() : ""}`
   ].filter(Boolean).join('\n\n')
   // El sitio usa editor clasico + WPBakery: se envuelve en vc_raw_html (base64) para que wpautop no rompa el HTML.
   const content = `[vc_raw_html]${Buffer.from(encodeURIComponent(partesHtml)).toString('base64')}[/vc_raw_html]`;
