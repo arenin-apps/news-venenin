@@ -40,5 +40,35 @@
     "intentos": 1,
     "fecha": "2026-11-06T16:28:48.571Z",
     "arenin": 10581
+  },
+  "https://secretldn.com/mercato-batt/": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-07T15:00:31.688Z",
+    "arenin": 10584
+  },
+  "https://www.timeout.com/uk/news/leeds-train-station-300-million-transformation-110626": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-07T15:01:20.743Z",
+    "arenin": 10586
+  },
+  "https://www.timeout.com/london/news/worlds-best-luxury-hotel-brand-mandarin-oriental-110726": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-07T15:04:04.736Z",
+    "arenin": 10588
+  },
+  "https://londonist.com/london/architecture/brixton-buildings-underrated": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-07T15:04:39.382Z",
+    "arenin": 10590
+  },
+  "https://www.mylondon.news/news/north-london-news/police-name-two-teenagers-charged-34877685": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-07T15:08:11.700Z",
+    "arenin": 10592
   }
 }
