@@ -70,5 +70,17 @@
     "intentos": 1,
     "fecha": "2026-11-07T15:08:11.700Z",
     "arenin": 10592
+  },
+  "https://www.timeout.com/london/theatre/london-musicals": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-08T15:29:58.842Z",
+    "arenin": 10594
+  },
+  "https://londonist.com/london/things-to-do/shire-horse-sunday-hampton-court-palace": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-08T15:30:24.715Z",
+    "arenin": 10596
   }
 }
