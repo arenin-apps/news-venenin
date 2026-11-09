@@ -82,5 +82,23 @@
     "intentos": 1,
     "fecha": "2026-11-08T15:30:24.715Z",
     "arenin": 10596
+  },
+  "https://secretldn.com/mardys-mayfair-sandwich-shop-berenjak-persian-restaurant-london-collab/": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-09T19:02:39.670Z",
+    "arenin": 10598
+  },
+  "https://londonist.com/london/weekend/things-to-do-in-london-this-weekend-14-15-november-2026": {
+    "estado": "error",
+    "intentos": 1,
+    "fecha": "2026-11-09T19:08:01.682Z",
+    "arenin": 10600
+  },
+  "https://www.mylondon.news/news/transport/london-underground-live-4-tube-34882603": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-09T19:09:01.393Z",
+    "arenin": 10602
   }
 }
