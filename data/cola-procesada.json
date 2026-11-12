@@ -124,5 +124,35 @@
     "intentos": 1,
     "fecha": "2026-11-11T16:34:03.443Z",
     "arenin": 10618
+  },
+  "https://secretldn.com/elizabeth-line-closure-november/": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-12T17:00:17.443Z",
+    "arenin": 10633
+  },
+  "https://www.timeout.com/uk/news/worlds-100-best-vineyards-2026-uk-nyetimber-sussex-111226": {
+    "estado": "error",
+    "intentos": 1,
+    "fecha": "2026-11-12T17:00:46.202Z",
+    "arenin": 10635
+  },
+  "https://www.timeout.com/london/news/new-small-press-bookshop-independent-publishers-peckham-111226": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-12T17:01:31.897Z",
+    "arenin": 10637
+  },
+  "https://londonist.com/london/christmas-in-london/shard-christmas-lights-2026-advent-calendar": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-12T17:02:00.638Z",
+    "arenin": 10639
+  },
+  "https://www.mylondon.news/news/transport/vast-majority-elizabeth-line-close-34900703": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-12T17:02:28.688Z",
+    "arenin": 10641
   }
 }
