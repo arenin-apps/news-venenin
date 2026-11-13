@@ -154,5 +154,23 @@
     "intentos": 1,
     "fecha": "2026-11-12T17:02:28.688Z",
     "arenin": 10641
+  },
+  "https://www.timeout.com/uk/news/most-beautiful-places-uk-2026-oxford-city-centre-111326": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-13T19:58:42.699Z",
+    "arenin": 10643
+  },
+  "https://www.timeout.com/london/news/shard-christmas-2026-lights-display-switch-on-date-111326": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-13T19:59:15.010Z",
+    "arenin": 10645
+  },
+  "https://londonist.com/london/christmas-in-london/christmas-at-kew-light-trail-2026-photos-review": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-13T19:59:40.949Z",
+    "arenin": 10647
   }
 }
