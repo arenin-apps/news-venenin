@@ -132,9 +132,9 @@
     "arenin": 10633
   },
   "https://www.timeout.com/uk/news/worlds-100-best-vineyards-2026-uk-nyetimber-sussex-111226": {
-    "estado": "error",
-    "intentos": 1,
-    "fecha": "2026-11-12T17:00:46.202Z",
+    "estado": "ok",
+    "intentos": 2,
+    "fecha": "2026-11-13T01:29:31.657Z",
     "arenin": 10635
   },
   "https://www.timeout.com/london/news/new-small-press-bookshop-independent-publishers-peckham-111226": {
