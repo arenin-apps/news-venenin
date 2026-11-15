@@ -196,5 +196,23 @@
     "intentos": 1,
     "fecha": "2026-11-14T18:26:47.376Z",
     "arenin": 10655
+  },
+  "https://www.timeout.com/london/news/great-northern-trains-double-off-peak-december-2026-111526": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-15T15:47:35.792Z",
+    "arenin": 10661
+  },
+  "https://londonist.com/london/christmas-in-london/snow-fall-london-christmas": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-15T15:48:13.378Z",
+    "arenin": 10663
+  },
+  "https://www.mylondon.news/news/transport/london-euston-passengers-warned-festive-34909605": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-15T15:48:34.102Z",
+    "arenin": 10665
   }
 }
