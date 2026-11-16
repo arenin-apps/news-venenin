@@ -214,5 +214,29 @@
     "intentos": 1,
     "fecha": "2026-11-15T15:48:34.102Z",
     "arenin": 10665
+  },
+  "https://www.timeout.com/uk/news/most-beautiful-places-2026-royal-pavilion-brighton-111626": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-16T18:47:25.882Z",
+    "arenin": 10684
+  },
+  "https://www.timeout.com/london/bars-and-pubs/best-hackney-pubs": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-16T18:48:50.156Z",
+    "arenin": 10686
+  },
+  "https://londonist.com/london/christmas-in-london/our-guide-to-christmas-shopping-at-oxo-tower-wharf": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-16T18:50:31.456Z",
+    "arenin": 10688
+  },
+  "https://www.mylondon.news/news/east-london-news/hackney-mayor-slams-outrageous-interference-34918569": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-16T18:52:06.735Z",
+    "arenin": 10690
   }
 }
