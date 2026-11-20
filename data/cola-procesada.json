@@ -240,15 +240,39 @@
     "arenin": 10690
   },
   "https://www.timeout.com/uk/news/birmingham-york-road-coolest-streets-world-2026-111926": {
-    "estado": "error",
-    "intentos": 2,
-    "fecha": "2026-11-20T07:43:49.398Z",
+    "estado": "ok",
+    "intentos": 3,
+    "fecha": "2026-11-20T17:08:28.426Z",
     "arenin": 10692
   },
   "https://londonist.com/london/museums-and-galleries/cinema-museum-fundraiser": {
-    "estado": "error",
-    "intentos": 2,
-    "fecha": "2026-11-20T07:51:13.127Z",
+    "estado": "ok",
+    "intentos": 3,
+    "fecha": "2026-11-20T17:10:11.271Z",
     "arenin": 10694
+  },
+  "https://secretldn.com/fever-gift-card-black-friday-26/": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-20T17:11:29.587Z",
+    "arenin": 10696
+  },
+  "https://www.timeout.com/uk/news/spotify-wrapped-2026-release-date-guide-112026": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-20T17:12:00.513Z",
+    "arenin": 10698
+  },
+  "https://www.timeout.com/london/news/five-happiest-london-boroughs-to-live-2026-112026": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-20T17:12:51.737Z",
+    "arenin": 10700
+  },
+  "https://londonist.com/london/transport/subwhere-tube-app-live-trains": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-20T17:13:34.995Z",
+    "arenin": 10703
   }
 }
