@@ -241,14 +241,14 @@
   },
   "https://www.timeout.com/uk/news/birmingham-york-road-coolest-streets-world-2026-111926": {
     "estado": "error",
-    "intentos": 1,
-    "fecha": "2026-11-19T23:10:35.004Z",
+    "intentos": 2,
+    "fecha": "2026-11-20T07:43:49.398Z",
     "arenin": 10692
   },
   "https://londonist.com/london/museums-and-galleries/cinema-museum-fundraiser": {
     "estado": "error",
-    "intentos": 1,
-    "fecha": "2026-11-19T23:11:13.510Z",
+    "intentos": 2,
+    "fecha": "2026-11-20T07:51:13.127Z",
     "arenin": 10694
   }
 }
