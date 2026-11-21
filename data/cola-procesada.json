@@ -280,5 +280,23 @@
     "intentos": 1,
     "fecha": "2026-11-21T01:40:33.366Z",
     "arenin": 10709
+  },
+  "https://www.timeout.com/uk/news/places-to-visit-2027-conde-nast-traveller-dartmoor-112026": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-21T21:48:53.625Z",
+    "arenin": 10722
+  },
+  "https://www.timeout.com/london/news/british-indian-good-food-guide-2026-35-restaurants-112126": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-21T21:49:28.405Z",
+    "arenin": 10724
+  },
+  "https://londonist.com/london/sport/i-was-hooked-football-memories": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-21T21:50:33.150Z",
+    "arenin": 10726
   }
 }
