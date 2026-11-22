@@ -298,5 +298,17 @@
     "intentos": 1,
     "fecha": "2026-11-21T21:50:33.150Z",
     "arenin": 10726
+  },
+  "https://londonist.com/london/history/billy-waters-regency-london": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-22T16:32:41.486Z",
+    "arenin": 10732
+  },
+  "https://www.mylondon.news/news/north-london-news/londons-most-dangerous-amputee-now-34927985": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-22T16:33:27.452Z",
+    "arenin": 10734
   }
 }
