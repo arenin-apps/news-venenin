@@ -310,5 +310,35 @@
     "intentos": 1,
     "fecha": "2026-11-22T16:33:27.452Z",
     "arenin": 10734
+  },
+  "https://secretldn.com/uk-2035-womens-world-cup/": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-24T03:00:06.946Z",
+    "arenin": 10736
+  },
+  "https://www.timeout.com/uk/news/machynlleth-wales-coolest-streets-in-world-2026-112326": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-24T03:00:50.343Z",
+    "arenin": 10738
+  },
+  "https://www.timeout.com/london/news/november-2026-tube-strikes-how-to-travel-around-london-112226": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-24T03:01:41.351Z",
+    "arenin": 10740
+  },
+  "https://londonist.com/london/weekend/things-to-do-in-london-this-weekend-28-29-november-2026": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-24T03:02:26.397Z",
+    "arenin": 10742
+  },
+  "https://www.mylondon.news/whats-on/whats-on-news/lost-nightclub-new-central-london-34954884": {
+    "estado": "ok",
+    "intentos": 1,
+    "fecha": "2026-11-24T03:03:24.401Z",
+    "arenin": 10744
   }
 }
